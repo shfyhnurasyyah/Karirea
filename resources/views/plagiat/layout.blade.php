@@ -4,15 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'Cek Plagiat') — KARIREA</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style type="text/tailwindcss">
-        @theme {
-            --color-primary: #1F8A8C;
-            --color-dark: #16313A;
-        }
-    </style>
+    @vite('resources/css/app.css')
 </head>
-<body class="min-h-screen bg-slate-50 text-slate-800 antialiased">
+<body class="theme-plagiat min-h-screen bg-slate-50 text-slate-800 antialiased">
     <header class="border-b border-slate-200 bg-white">
         <div class="mx-auto flex max-w-4xl items-center justify-between px-5 py-4">
             <a href="{{ route('landing') }}" class="text-lg font-bold tracking-tight text-dark">KARI<span class="text-primary">REA</span></a>
