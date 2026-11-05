@@ -1,0 +1,241 @@
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-tertiary: var(--tertiary);
+    --color-tertiary-foreground: var(--tertiary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-dark: var(--dark);
+    --font-family-sans: var(--font-sans);
+    --font-family-heading: var(--font-heading);
+    --radius-lg: var(--radius);
+}
+
+@theme {
+    --color-primary: #1F8A8C;
+    --color-dark: #16313A;
+}
+
+.theme-landing,
+.theme-cv {
+    --background: #FFFFFF;
+    --foreground: #16313A;
+    --primary: #1F8A8C;
+    --primary-foreground: #121212;
+    --secondary: #E8F4F4;
+    --secondary-foreground: #16313A;
+    --muted: #F5F8F8;
+    --muted-foreground: #62757B;
+    --accent: #FFF4DF;
+    --accent-foreground: #6B4B14;
+    --card: #FFFFFF;
+    --card-foreground: #16313A;
+    --border: #D9E6E6;
+    --radius: 0.875rem;
+    --font-sans: Inter, ui-sans-serif, sans-serif;
+    --font-heading: 'Plus Jakarta Sans', Inter, ui-sans-serif, sans-serif;
+}
+
+.theme-landing {
+    --tertiary: #0F766E;
+}
+
+.theme-cv {
+    --input: #C8DADB;
+}
+
+.theme-plagiat {
+    --primary: #1F8A8C;
+    --dark: #16313A;
+}
+
+.theme-optimasi {
+    color-scheme: light;
+    --ink: #16313a;
+    --teal: #1f8a8c;
+    --muted: #62757b;
+    --border: #d9e6e6;
+    --surface: #f4f8f8;
+    color: var(--ink);
+    font-family: Inter, ui-sans-serif, sans-serif;
+}
+
+.theme-optimasi h1,
+.theme-optimasi .font-heading {
+    font-family: "Plus Jakarta Sans", Inter, ui-sans-serif, sans-serif;
+}
+
+.theme-optimasi .spin {
+    animation: spin 1.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .theme-optimasi *,
+    .theme-optimasi *::before,
+    .theme-optimasi *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+.mix-blend-hard-light {
+    mix-blend-mode: hard-light;
+}
+
+.mix-blend-plus-darker {
+    mix-blend-mode: plus-darker;
+}
+
+.cv-color-teal {
+    background-color: #1F8A8C;
+}
+
+.cv-color-dark {
+    background-color: #16313A;
+}
+
+.cv-color-red {
+    background-color: #C94B4B;
+}
+
+.cv-color-brown {
+    background-color: #6B4B14;
+}
+
+.plagiarism-score {
+    --score-color: #475569;
+    background: conic-gradient(var(--score-color) var(--score-stop), #e2e8f0 0);
+}
+
+.plagiarism-score[data-status="orisional"] {
+    --score-color: #059669;
+}
+
+.plagiarism-score[data-status="sedang"] {
+    --score-color: #d97706;
+}
+
+.plagiarism-score[data-status="tinggi"] {
+    --score-color: #e11d48;
+}
+
+.plagiarism-score--0 { --score-stop: 0%; }
+.plagiarism-score--1 { --score-stop: 1%; }
+.plagiarism-score--2 { --score-stop: 2%; }
+.plagiarism-score--3 { --score-stop: 3%; }
+.plagiarism-score--4 { --score-stop: 4%; }
+.plagiarism-score--5 { --score-stop: 5%; }
+.plagiarism-score--6 { --score-stop: 6%; }
+.plagiarism-score--7 { --score-stop: 7%; }
+.plagiarism-score--8 { --score-stop: 8%; }
+.plagiarism-score--9 { --score-stop: 9%; }
+.plagiarism-score--10 { --score-stop: 10%; }
+.plagiarism-score--11 { --score-stop: 11%; }
+.plagiarism-score--12 { --score-stop: 12%; }
+.plagiarism-score--13 { --score-stop: 13%; }
+.plagiarism-score--14 { --score-stop: 14%; }
+.plagiarism-score--15 { --score-stop: 15%; }
+.plagiarism-score--16 { --score-stop: 16%; }
+.plagiarism-score--17 { --score-stop: 17%; }
+.plagiarism-score--18 { --score-stop: 18%; }
+.plagiarism-score--19 { --score-stop: 19%; }
+.plagiarism-score--20 { --score-stop: 20%; }
+.plagiarism-score--21 { --score-stop: 21%; }
+.plagiarism-score--22 { --score-stop: 22%; }
+.plagiarism-score--23 { --score-stop: 23%; }
+.plagiarism-score--24 { --score-stop: 24%; }
+.plagiarism-score--25 { --score-stop: 25%; }
+.plagiarism-score--26 { --score-stop: 26%; }
+.plagiarism-score--27 { --score-stop: 27%; }
+.plagiarism-score--28 { --score-stop: 28%; }
+.plagiarism-score--29 { --score-stop: 29%; }
+.plagiarism-score--30 { --score-stop: 30%; }
+.plagiarism-score--31 { --score-stop: 31%; }
+.plagiarism-score--32 { --score-stop: 32%; }
+.plagiarism-score--33 { --score-stop: 33%; }
+.plagiarism-score--34 { --score-stop: 34%; }
+.plagiarism-score--35 { --score-stop: 35%; }
+.plagiarism-score--36 { --score-stop: 36%; }
+.plagiarism-score--37 { --score-stop: 37%; }
+.plagiarism-score--38 { --score-stop: 38%; }
+.plagiarism-score--39 { --score-stop: 39%; }
+.plagiarism-score--40 { --score-stop: 40%; }
+.plagiarism-score--41 { --score-stop: 41%; }
+.plagiarism-score--42 { --score-stop: 42%; }
+.plagiarism-score--43 { --score-stop: 43%; }
+.plagiarism-score--44 { --score-stop: 44%; }
+.plagiarism-score--45 { --score-stop: 45%; }
+.plagiarism-score--46 { --score-stop: 46%; }
+.plagiarism-score--47 { --score-stop: 47%; }
+.plagiarism-score--48 { --score-stop: 48%; }
+.plagiarism-score--49 { --score-stop: 49%; }
+.plagiarism-score--50 { --score-stop: 50%; }
+.plagiarism-score--51 { --score-stop: 51%; }
+.plagiarism-score--52 { --score-stop: 52%; }
+.plagiarism-score--53 { --score-stop: 53%; }
+.plagiarism-score--54 { --score-stop: 54%; }
+.plagiarism-score--55 { --score-stop: 55%; }
+.plagiarism-score--56 { --score-stop: 56%; }
+.plagiarism-score--57 { --score-stop: 57%; }
+.plagiarism-score--58 { --score-stop: 58%; }
+.plagiarism-score--59 { --score-stop: 59%; }
+.plagiarism-score--60 { --score-stop: 60%; }
+.plagiarism-score--61 { --score-stop: 61%; }
+.plagiarism-score--62 { --score-stop: 62%; }
+.plagiarism-score--63 { --score-stop: 63%; }
+.plagiarism-score--64 { --score-stop: 64%; }
+.plagiarism-score--65 { --score-stop: 65%; }
+.plagiarism-score--66 { --score-stop: 66%; }
+.plagiarism-score--67 { --score-stop: 67%; }
+.plagiarism-score--68 { --score-stop: 68%; }
+.plagiarism-score--69 { --score-stop: 69%; }
+.plagiarism-score--70 { --score-stop: 70%; }
+.plagiarism-score--71 { --score-stop: 71%; }
+.plagiarism-score--72 { --score-stop: 72%; }
+.plagiarism-score--73 { --score-stop: 73%; }
+.plagiarism-score--74 { --score-stop: 74%; }
+.plagiarism-score--75 { --score-stop: 75%; }
+.plagiarism-score--76 { --score-stop: 76%; }
+.plagiarism-score--77 { --score-stop: 77%; }
+.plagiarism-score--78 { --score-stop: 78%; }
+.plagiarism-score--79 { --score-stop: 79%; }
+.plagiarism-score--80 { --score-stop: 80%; }
+.plagiarism-score--81 { --score-stop: 81%; }
+.plagiarism-score--82 { --score-stop: 82%; }
+.plagiarism-score--83 { --score-stop: 83%; }
+.plagiarism-score--84 { --score-stop: 84%; }
+.plagiarism-score--85 { --score-stop: 85%; }
+.plagiarism-score--86 { --score-stop: 86%; }
+.plagiarism-score--87 { --score-stop: 87%; }
+.plagiarism-score--88 { --score-stop: 88%; }
+.plagiarism-score--89 { --score-stop: 89%; }
+.plagiarism-score--90 { --score-stop: 90%; }
+.plagiarism-score--91 { --score-stop: 91%; }
+.plagiarism-score--92 { --score-stop: 92%; }
+.plagiarism-score--93 { --score-stop: 93%; }
+.plagiarism-score--94 { --score-stop: 94%; }
+.plagiarism-score--95 { --score-stop: 95%; }
+.plagiarism-score--96 { --score-stop: 96%; }
+.plagiarism-score--97 { --score-stop: 97%; }
+.plagiarism-score--98 { --score-stop: 98%; }
+.plagiarism-score--99 { --score-stop: 99%; }
+.plagiarism-score--100 { --score-stop: 100%; }

@@ -7,55 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    @vite('resources/css/app.css')
     <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
-    <style type="text/tailwindcss">
-      @import "tailwindcss";
-      @theme inline {
-        --color-background: var(--background);
-        --color-foreground: var(--foreground);
-        --color-primary: var(--primary);
-        --color-primary-foreground: var(--primary-foreground);
-        --color-secondary: var(--secondary);
-        --color-secondary-foreground: var(--secondary-foreground);
-        --color-tertiary: var(--tertiary);
-        --color-tertiary-foreground: var(--tertiary-foreground);
-        --color-muted: var(--muted);
-        --color-muted-foreground: var(--muted-foreground);
-        --color-accent: var(--accent);
-        --color-accent-foreground: var(--accent-foreground);
-        --color-destructive: var(--destructive);
-        --color-destructive-foreground: var(--destructive-foreground);
-        --color-card: var(--card);
-        --color-card-foreground: var(--card-foreground);
-        --color-border: var(--border);
-        --font-family-sans: var(--font-sans);
-        --font-family-heading: var(--font-heading);
-        --radius-lg: var(--radius);
-      }
-      :root {
-        --background: #FFFFFF;
-        --foreground: #16313A;
-        --primary: #1F8A8C;
-        --primary-foreground: #121212;
-        --secondary: #E8F4F4;
-        --secondary-foreground: #16313A;
-        --tertiary: #0F766E;
-        --muted: #F5F8F8;
-        --muted-foreground: #62757B;
-        --accent: #FFF4DF;
-        --accent-foreground: #6B4B14;
-        --card: #FFFFFF;
-        --card-foreground: #16313A;
-        --border: #D9E6E6;
-        --radius: 0.875rem;
-        --font-sans: Inter, ui-sans-serif, sans-serif;
-        --font-heading: 'Plus Jakarta Sans', Inter, ui-sans-serif, sans-serif;
-      }
-      .text-primary { color: var(--primary); }
-    </style>
   </head>
-  <body>
+  <body class="theme-landing">
     <div class="min-h-screen w-full bg-background flex flex-col relative">
       <header class="border-b border-border bg-background">
         <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4">

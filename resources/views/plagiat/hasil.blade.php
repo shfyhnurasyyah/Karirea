@@ -10,25 +10,22 @@
 
     $tema = [
         'orisinal' => [
-            'warna' => '#059669',
             'badge' => 'bg-emerald-50 text-emerald-700 border-emerald-200',
             'judul' => 'Cukup orisinal',
             'saran' => 'Surat Anda sebagian besar ditulis dengan kata-kata sendiri. Periksa kalimat yang ditandai (jika ada) lalu kirim.',
         ],
         'sedang' => [
-            'warna' => '#d97706',
             'badge' => 'bg-amber-50 text-amber-700 border-amber-200',
             'judul' => 'Perlu revisi ringan',
             'saran' => 'Beberapa kalimat terdengar seperti template. Ganti dengan contoh nyata: proyek, angka, atau nama perusahaan yang dilamar.',
         ],
         'tinggi' => [
-            'warna' => '#e11d48',
             'badge' => 'bg-rose-50 text-rose-700 border-rose-200',
             'judul' => 'Terlalu mirip template',
             'saran' => 'Sebagian besar surat mirip kalimat umum. Tulis ulang dengan pengalaman dan alasan Anda sendiri agar menonjol di mata HRD.',
         ],
     ][$cek->status_hasil] ?? null;
-    $tema ??= ['warna' => '#475569', 'badge' => 'bg-slate-50 text-slate-700 border-slate-200', 'judul' => '-', 'saran' => ''];
+    $tema ??= ['badge' => 'bg-slate-50 text-slate-700 border-slate-200', 'judul' => '-', 'saran' => ''];
 @endphp
 
 @section('content')
@@ -37,8 +34,9 @@
     <div class="mt-4 grid gap-6 md:grid-cols-[260px_1fr]">
         {{-- Skor --}}
         <aside class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <div class="mx-auto flex size-40 items-center justify-center rounded-full"
-                 style="background: conic-gradient({{ $tema['warna'] }} {{ $skor }}%, #e2e8f0 0);"
+            <div class="plagiarism-score plagiarism-score--{{ $skor }} mx-auto flex size-40 items-center justify-center rounded-full"
+                 data-score="{{ $skor }}"
+                 data-status="{{ $cek->status_hasil }}"
                  role="img" aria-label="Kemiripan {{ $skor }} persen">
                 <div class="flex size-32 flex-col items-center justify-center rounded-full bg-white">
                     <span class="text-4xl font-bold text-dark">{{ $skor }}%</span>
