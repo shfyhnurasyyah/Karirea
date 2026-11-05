@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\PlagiatController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -8,9 +10,21 @@ Route::get('/', function () {
     return view('landing');
 })->name('landing');
 
-Route::get('/admin/login', function () {
-    return 'Halaman Login Admin (belum dibuat)';
-})->name('admin.login');
+// Halaman pilihan "Mulai gratis"
+Route::get('/mulai', fn () => view('mulai'))->name('mulai');
+
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::middleware('guest')->group(function () {
+        Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login');
+        Route::post('/login', [AdminAuthController::class, 'login'])->name('login.post');
+    });
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+        Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
+    });
+});
 
 Route::get('/cv/create', function () {
     return view('cv.create');

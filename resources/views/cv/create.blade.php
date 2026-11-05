@@ -260,5 +260,12 @@
         }
       });
     </script>
+    <script>
+      if (new URLSearchParams(location.search).get('mode') === 'unggah') {
+        const fileInput = document.querySelector('input[type="file"]');
+        const uploadTarget = fileInput?.closest('.border-dashed') || fileInput?.parentElement || fileInput;
+        uploadTarget?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    </script>
   </body>
 </html>

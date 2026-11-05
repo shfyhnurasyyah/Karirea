@@ -24,7 +24,7 @@
             <a href="#template">Template</a>
             <a href="#faq">FAQ</a>
             <a href="{{ route('admin.login') }}" class="min-h-11 rounded-lg px-3 flex items-center">Masuk Admin</a>
-            <a href="{{ route('cv.create') }}" class="min-h-11 rounded-lg bg-primary px-5 font-semibold text-primary-foreground shadow-md flex items-center">Mulai gratis</a>
+            <a href="{{ route('mulai') }}" class="min-h-11 rounded-lg bg-primary px-5 font-semibold text-primary-foreground shadow-md flex items-center">Mulai gratis</a>
           </nav>
         </div>
       </header>
