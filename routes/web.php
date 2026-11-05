@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PlagiatController;
+use App\Http\Controllers\ResumeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,3 +25,6 @@ Route::prefix('plagiat')->name('plagiat.')->group(function () {
     Route::post('/store', [PlagiatController::class, 'store'])->name('store');
     Route::get('/hasil/{cek}', [PlagiatController::class, 'show'])->name('show');
 });
+
+Route::get('/resume/create', [ResumeController::class, 'create'])->name('resume.create');
+Route::post('/resume', [ResumeController::class, 'store'])->name('resume.store');
