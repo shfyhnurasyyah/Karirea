@@ -1,0 +1,29 @@
+* [33md284807[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/perbaikan-laravel[m[33m, [m[1;32mperbaikan-laravel[m[33m)[m Update fitur KARIRea
+[31m|[m *   [33m05fa60f[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge pull request #1 from shfyhnurasyyah/fitur-data-pribadi
+[31m|[m [32m|[m[33m\[m  
+[31m|[m [32m|[m *   [33mdaf1a3e[m[33m ([m[1;31morigin/fitur-data-pribadi[m[33m)[m Merge branch 'main' into fitur-data-pribadi
+[31m|[m [32m|[m [34m|[m[32m\[m  
+[31m|[m [32m|[m [34m|[m[32m/[m  
+[31m|[m [32m|[m[32m/[m[34m|[m   
+[31m|[m * [34m|[m [33mb706820[m Merge pull request #2 from shfyhnurasyyah/fitur-Ridwan
+[31m|[m[31m/[m[1;31m|[m [34m|[m 
+[31m|[m * [34m|[m [33mca435ec[m[33m ([m[1;31morigin/fitur-Ridwan[m[33m)[m Tambah GeminiClient, konfigurasi Gemini, dan perintah gemini:models
+[31m|[m * [34m|[m   [33m28fa08b[m Merge branch 'main' into fitur-Ridwan
+[31m|[m [1;32m|[m[1;33m\[m [34m\[m  
+[31m|[m [1;32m|[m * [34m\[m   [33m67bd287[m Merge branch 'main' of https://github.com/shfyhnurasyyah/Karirea
+[31m|[m [1;32m|[m [1;34m|[m[1;35m\[m [34m\[m  
+[31m|[m * [1;34m|[m [1;35m\[m [34m\[m   [33m976e3be[m Merge branch 'main' of https://github.com/shfyhnurasyyah/Karirea into fitur-Ridwan
+[31m|[m [1;34m|[m[1;35m\[m [1;34m\[m [1;35m\[m [34m\[m  
+[31m|[m [1;34m|[m [1;35m|[m[1;34m/[m [1;35m/[m [34m/[m  
+[31m|[m [1;34m|[m[1;34m/[m[1;35m|[m [1;35m/[m [34m/[m   
+[31m|[m [1;34m|[m [1;35m|[m[1;35m/[m [34m/[m    
+[31m|[m * [1;35m|[m [34m|[m [33ma9d2f6b[m commit pertama
+* [31m|[m [1;35m|[m [34m|[m [33mb713c9b[m Refactor: pisahkan CSS tema ke folder terpisah
+[1;35m|[m [31m|[m[1;35m/[m [34m/[m  
+[1;35m|[m[1;35m/[m[31m|[m [34m|[m   
+[1;35m|[m [31m|[m * [33m825ab52[m Tambah halaman Data pribadi pembuat CV
+[1;35m|[m [31m|[m[1;35m/[m  
+[1;35m|[m[1;35m/[m[31m|[m   
+* [31m|[m [33m4caf9ae[m Add Plagiat feature
+[31m|[m[31m/[m  
+* [33m3eabb9d[m Initial commit - setup project KARIREA
