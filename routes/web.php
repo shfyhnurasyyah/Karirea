@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\CvController;
 use App\Http\Controllers\PlagiatController;
 use App\Http\Controllers\ResumeController;
 use Illuminate\Http\Request;
@@ -34,13 +35,8 @@ Route::get('/cv/optimasi', function () {
     return view('cv.optimasi', ['targetPosisi' => 'Product Designer']);
 })->name('cv.optimasi');
 
-Route::post('/cv/store', function (Request $request) {
-    $validated = $request->validate([
-        'target_posisi' => ['required', 'string', 'max:120'],
-    ]);
-
-    return view('cv.optimasi', ['targetPosisi' => $validated['target_posisi']]);
-})->name('cv.store');
+Route::post('/cv/store', [CvController::class, 'store'])->name('cv.store');
+Route::get('/cv/hasil/{cv}', [CvController::class, 'show'])->name('cv.result');
 
 Route::prefix('plagiat')->name('plagiat.')->group(function () {
     Route::get('/create', [PlagiatController::class, 'create'])->name('create');

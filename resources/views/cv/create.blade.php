@@ -39,6 +39,17 @@
         <form action="{{ route('cv.store') }}" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 gap-6 lg:grid-cols-3">
           @csrf
 
+          @if ($errors->any())
+            <div role="alert" class="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800 lg:col-span-3">
+              <p class="font-semibold">Periksa kembali data CV kamu:</p>
+              <ul class="mt-2 list-inside list-disc">
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          @endif
+
           <section class="rounded-xl bg-card p-6 shadow-md lg:col-span-2">
             <div class="flex items-start justify-between gap-4">
               <div>
@@ -60,7 +71,7 @@
                 <p class="mt-1 text-sm text-muted-foreground">PDF, TXT, atau Gambar — maksimal 10 MB</p>
                 <label class="mt-4 inline-block cursor-pointer min-h-11 rounded-lg border border-border bg-card px-4 py-2.5 text-sm font-semibold">
                   Pilih file
-                  <input type="file" name="file_cv" accept=".pdf,.txt,image/*" class="hidden" />
+                  <input type="file" name="file_cv" accept=".pdf,.txt,.jpg,.jpeg,.png,.webp" class="hidden" />
                 </label>
               </div>
               <div class="my-5 flex items-center gap-3 text-sm text-muted-foreground">
@@ -69,29 +80,29 @@
               <textarea name="teks_cv_asli" maxlength="4000"
                 class="min-h-36 w-full rounded-xl border border-input bg-background p-4 text-sm outline-none"
                 placeholder="Tempel ringkasan pengalaman, pendidikan, keahlian, dan pencapaianmu di sini..."
-                oninput="document.getElementById('cvCharCount').innerText = this.value.length"></textarea>
+                oninput="document.getElementById('cvCharCount').innerText = this.value.length">{{ old('teks_cv_asli') }}</textarea>
               <p class="mt-1 text-right text-xs text-muted-foreground"><span id="cvCharCount">0</span> / 4000 karakter</p>
             </div>
 
             <div class="mt-7 grid grid-cols-1 gap-5 md:grid-cols-2">
               <div>
                 <label class="text-sm font-semibold">Target posisi <span class="text-red-500">*</span></label>
-                <input type="text" name="target_posisi" required
+                <input type="text" name="target_posisi" value="{{ old('target_posisi') }}" required
                   class="mt-2 min-h-11 w-full rounded-lg border border-input bg-background px-3" placeholder="Contoh: Staff Administrasi">
               </div>
               <div>
                 <label class="text-sm font-semibold">Level pengalaman</label>
                 <select name="level_pengalaman" class="mt-2 min-h-11 w-full rounded-lg border border-input bg-background px-3">
-                  <option value="Fresh Graduate">Fresh Graduate</option>
-                  <option value="Career Switch">Career Switch (Pindah Karir)</option>
-                  <option value="Experienced">Experienced (Berpengalaman)</option>
+                  <option value="Fresh Graduate" @selected(old('level_pengalaman', 'Fresh Graduate') === 'Fresh Graduate')>Fresh Graduate</option>
+                  <option value="Career Switch" @selected(old('level_pengalaman') === 'Career Switch')>Career Switch (Pindah Karir)</option>
+                  <option value="Experienced" @selected(old('level_pengalaman') === 'Experienced')>Experienced (Berpengalaman)</option>
                 </select>
               </div>
               <div>
                 <label class="text-sm font-semibold">Bahasa CV</label>
                 <select name="bahasa_output" class="mt-2 min-h-11 w-full rounded-lg border border-input bg-background px-3">
-                  <option value="Bahasa Indonesia">Bahasa Indonesia</option>
-                  <option value="English">English (Internasional)</option>
+                  <option value="Bahasa Indonesia" @selected(old('bahasa_output', 'Bahasa Indonesia') === 'Bahasa Indonesia')>Bahasa Indonesia</option>
+                  <option value="English" @selected(old('bahasa_output') === 'English')>English (Internasional)</option>
                 </select>
               </div>
               <div class="rounded-xl bg-secondary p-4">
@@ -167,10 +178,10 @@
               <div class="mt-4">
                 <p class="text-sm font-semibold">Tema warna</p>
                 <div class="mt-2 flex gap-2">
-                  <input type="radio" name="tema_warna" value="#1F8A8C" checked class="cv-color-teal h-7 w-7 rounded-full border-2 border-border">
-                  <input type="radio" name="tema_warna" value="#16313A" class="cv-color-dark h-7 w-7 rounded-full border-2 border-border">
-                  <input type="radio" name="tema_warna" value="#C94B4B" class="cv-color-red h-7 w-7 rounded-full border-2 border-border">
-                  <input type="radio" name="tema_warna" value="#6B4B14" class="cv-color-brown h-7 w-7 rounded-full border-2 border-border">
+                  <input type="radio" name="tema_warna" value="#1D4ED8" checked class="cv-color-biru appearance-none h-7 w-7 rounded-full border-2 border-border cursor-pointer checked:ring-2 checked:ring-offset-2 checked:ring-primary">
+                  <input type="radio" name="tema_warna" value="#15803D" class="cv-color-hijau appearance-none h-7 w-7 rounded-full border-2 border-border cursor-pointer checked:ring-2 checked:ring-offset-2 checked:ring-primary">
+                  <input type="radio" name="tema_warna" value="#B91C1C" class="cv-color-merah appearance-none h-7 w-7 rounded-full border-2 border-border cursor-pointer checked:ring-2 checked:ring-offset-2 checked:ring-primary">
+                  <input type="radio" name="tema_warna" value="#111827" class="cv-color-hitam appearance-none h-7 w-7 rounded-full border-2 border-border cursor-pointer checked:ring-2 checked:ring-offset-2 checked:ring-primary">
                 </div>
               </div>
 

@@ -72,7 +72,8 @@ PROMPT;
         string $level,
         string $lang,
         ?string $jd = null,
-        string $source = 'upload'
+        string $source = 'upload',
+        ?array $document = null
     ): array {
         $sourceNote = $source === 'form'
             ? "SUMBER_DATA: form terstruktur (JSON). Susun menjadi CV lengkap. Ubah isian tugas menjadi poin pengalaman dengan kata kerja aksi. Pakai angka hanya dari isian pencapaian. Kolom kosong jangan diisi, beri saran."
@@ -87,7 +88,20 @@ PROMPT;
         }
         $user .= "<cv_pengguna>\n{$text}\n</cv_pengguna>";
 
-        $raw = $this->gemini->generate([['text' => $user]], $this->system(), json: true);
+        $parts = [];
+
+        if ($document) {
+            $parts[] = [
+                'inline_data' => [
+                    'mime_type' => $document['mime'],
+                    'data' => base64_encode($document['contents']),
+                ],
+            ];
+        }
+
+        $parts[] = ['text' => $user];
+
+        $raw = $this->gemini->generate($parts, $this->system(), json: true);
         $raw = preg_replace('/^```(?:json)?|```$/m', '', trim($raw));
         $data = json_decode($raw, true);
 

@@ -105,20 +105,20 @@
     mix-blend-mode: plus-darker;
 }
 
-.cv-color-teal {
-    background-color: #1F8A8C;
+.cv-color-biru {
+    background-color: #1D4ED8;
 }
 
-.cv-color-dark {
-    background-color: #16313A;
+.cv-color-hijau {
+    background-color: #15803D;
 }
 
-.cv-color-red {
-    background-color: #C94B4B;
+.cv-color-merah {
+    background-color: #B91C1C;
 }
 
-.cv-color-brown {
-    background-color: #6B4B14;
+.cv-color-hitam {
+    background-color: #111827;
 }
 
 .plagiarism-score {

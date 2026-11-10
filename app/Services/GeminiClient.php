@@ -12,11 +12,15 @@ class GeminiClient
 {
     /**
      * Kirim permintaan ke Gemini.
-     * Otomatis mencoba ulang saat server sibuk (429/500/503),
+    * Mencoba ulang sekali saat server sibuk (429/500/503),
      * lalu pindah ke model cadangan bila diisi di .env.
      */
     public function generate(array $parts, ?string $system = null, bool $json = false): string
     {
+        if (! config('services.gemini.key')) {
+            throw new RuntimeException('GEMINI_API_KEY belum dikonfigurasi.');
+        }
+
         $payload = [
             'contents' => [['role' => 'user', 'parts' => $parts]],
             'generationConfig' => ['temperature' => 0.2],
@@ -42,10 +46,10 @@ class GeminiClient
             $url = "https://generativelanguage.googleapis.com/v1beta/models/{$model}:generateContent";
 
             $res = Http::withHeaders(['x-goog-api-key' => config('services.gemini.key')])
-                ->timeout(60)
+                ->timeout(20)
                 ->retry(
-                    3,
-                    2000, // jeda 2 detik antar percobaan
+                    2,
+                    1000,
                     when: fn ($e) => $e instanceof ConnectionException
                         || ($e instanceof RequestException
                             && in_array($e->response->status(), [429, 500, 503])),
