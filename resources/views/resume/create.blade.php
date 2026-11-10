@@ -1,118 +1,181 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Buat CV - Data pribadi</title>
-    <style>
-        * { box-sizing: border-box; }
-        body { margin: 0; font-family: Arial, sans-serif; background: #f3f4f6; color: #111827; }
-        .wrap { display: flex; gap: 32px; padding: 32px; max-width: 1300px; margin: 0 auto; }
-        .panel { background: #fff; border-radius: 12px; padding: 32px; flex: 1; }
-        .preview { flex: 1; display: flex; justify-content: center; }
-        .paper { background: #fff; width: 100%; max-width: 520px; min-height: 640px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,.1); }
-        .step { color: #f04e23; font-weight: bold; font-size: 14px; }
-        h1 { margin: 8px 0; }
-        .desc { color: #4b5563; margin-bottom: 24px; }
-        label { display: block; font-weight: bold; margin: 16px 0 6px; }
-        input[type=text], input[type=email] { width: 100%; padding: 16px; border: 1px solid #e5e7eb; border-radius: 8px; background: #f9fafb; font-size: 16px; }
-        .row { display: flex; gap: 16px; }
-        .row > div { flex: 1; }
-        .foto { display: flex; align-items: center; gap: 16px; border: 1px dashed #d1d5db; border-radius: 8px; padding: 16px; cursor: pointer; }
-        .foto .plus { width: 48px; height: 48px; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; font-size: 24px; overflow: hidden; }
-        .foto .plus img { width: 100%; height: 100%; object-fit: cover; }
-        .foto small { color: #6b7280; }
-        .btn { margin-top: 28px; background: #f04e23; color: #fff; border: 0; padding: 16px 28px; border-radius: 999px; font-size: 16px; font-weight: bold; cursor: pointer; float: right; }
-        .error { color: #dc2626; font-size: 14px; margin-top: 4px; }
-        .sukses { background: #dcfce7; color: #166534; padding: 12px; border-radius: 8px; margin-bottom: 16px; }
-        .paper h2 { margin: 0 0 4px; }
-        .paper .pos { color: #4b5563; margin: 0 0 4px; }
-        .paper .mail { color: #6b7280; font-size: 14px; }
-        .paper .pp { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; display: none; }
-        .paper .judul { font-size: 12px; font-family: serif; margin-bottom: 16px; }
-    </style>
-</head>
-<body>
-<div class="wrap">
-    <div class="panel">
-        <div class="step">Langkah 1 dari 8</div>
-        <h1>Data pribadi</h1>
-        <p class="desc">Cara perusahaan menghubungi Anda. Kami memakai posisi yang Anda inginkan untuk menyesuaikan bagian CV lainnya.</p>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buat CV - Data pribadi | KARIREA</title>
+  <style>
+    :root {
+      --primary: #1f8a87;
+      --primary-dark: #176f6d;
+      --primary-soft: #e8f3f2;
+      --bg: #f4f8f8;
+      --text: #0b0f0f;
+      --muted: #5f7a80;
+      --border: #dde7e7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: "Segoe UI", Inter, system-ui, -apple-system, sans-serif;
+    }
+    a { text-decoration: none; color: inherit; }
 
-        @if (session('sukses'))
-            <div class="sukses">{{ session('sukses') }}</div>
-        @endif
-
-        <form action="{{ route('resume.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-
-            <label class="foto" for="foto" style="font-weight: normal; margin-top: 0;">
-                <span class="plus" id="fotoBox">+</span>
-                <span><strong>Tambah foto</strong><br><small>Opsional, pilih file gambar</small></span>
-            </label>
-            <input type="file" id="foto" name="foto" accept="image/*" style="display:none">
-            @error('foto') <div class="error">{{ $message }}</div> @enderror
-
-            <label for="posisi">Posisi yang diinginkan</label>
-            <input type="text" id="posisi" name="posisi" value="{{ old('posisi') }}">
-            @error('posisi') <div class="error">{{ $message }}</div> @enderror
-
-            <div class="row">
-                <div>
-                    <label for="nama_depan">Nama depan</label>
-                    <input type="text" id="nama_depan" name="nama_depan" value="{{ old('nama_depan') }}">
-                    @error('nama_depan') <div class="error">{{ $message }}</div> @enderror
-                </div>
-                <div>
-                    <label for="nama_belakang">Nama belakang</label>
-                    <input type="text" id="nama_belakang" name="nama_belakang" value="{{ old('nama_belakang') }}">
-                    @error('nama_belakang') <div class="error">{{ $message }}</div> @enderror
-                </div>
-            </div>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" value="{{ old('email') }}">
-            @error('email') <div class="error">{{ $message }}</div> @enderror
-
-            <button type="submit" class="btn">Berikutnya: Pengalaman kerja &rarr;</button>
-            <div style="clear: both"></div>
-        </form>
-    </div>
-
-    <div class="preview">
-        <div class="paper">
-            <div class="judul">Detail pribadi</div>
-            <img id="pvFoto" class="pp" alt="Foto">
-            <h2 id="pvNama"></h2>
-            <p class="pos" id="pvPosisi"></p>
-            <div class="mail" id="pvEmail"></div>
-        </div>
-    </div>
-</div>
-
-<script>
-    const $ = (id) => document.getElementById(id);
-
-    function perbarui() {
-        $('pvNama').textContent = ($('nama_depan').value + ' ' + $('nama_belakang').value).trim();
-        $('pvPosisi').textContent = $('posisi').value;
-        $('pvEmail').textContent = $('email').value;
+    /* ===== Navbar (sama seperti landing) ===== */
+    .nav { background: #fff; border-bottom: 1px solid var(--border); }
+    .nav-in {
+      max-width: 1240px; margin: 0 auto; padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 20px; }
+    .logo {
+      width: 36px; height: 36px; border-radius: 10px; background: var(--primary);
+      color: #fff; display: grid; place-items: center; font-size: 18px;
+    }
+    .menu { display: flex; align-items: center; gap: 28px; font-weight: 600; font-size: 15px; }
+    .btn-nav {
+      background: var(--primary); color: #fff; padding: 12px 20px;
+      border-radius: 12px; font-weight: 600;
+      box-shadow: 0 4px 12px rgba(31,138,135,.3);
     }
 
-    ['nama_depan', 'nama_belakang', 'posisi', 'email'].forEach((id) => {
-        $(id).addEventListener('input', perbarui);
-    });
+    /* ===== Layout ===== */
+    .wrap {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+      max-width: 1240px; margin: 40px auto; padding: 0 24px;
+    }
+    .card {
+      background: #fff; border-radius: 20px; padding: 36px;
+      border: 1px solid var(--border); box-shadow: 0 8px 30px rgba(31,138,135,.08);
+    }
+    .badge {
+      display: inline-block; background: var(--primary-soft); color: var(--primary);
+      font-weight: 600; font-size: 13px; padding: 6px 14px; border-radius: 999px; margin-bottom: 14px;
+    }
+    h1 { font-size: 36px; font-weight: 800; margin: 0 0 10px; line-height: 1.2; }
+    .desc { color: var(--muted); line-height: 1.7; margin: 0 0 24px; }
 
-    $('foto').addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        const url = URL.createObjectURL(file);
-        $('pvFoto').src = url;
-        $('pvFoto').style.display = 'block';
-        $('fotoBox').innerHTML = '<img src="' + url + '" alt="">';
-    });
+    label.field { display: block; font-weight: 600; margin: 20px 0 8px; }
+    .input {
+      width: 100%; padding: 14px 16px; background: #f7fafa;
+      border: 1px solid var(--border); border-radius: 12px; font-size: 15px; font-family: inherit;
+    }
+    .input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft); background: #fff; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-    perbarui();
+    .upload {
+      display: flex; gap: 14px; align-items: center; padding: 16px;
+      border: 1px dashed var(--primary); background: var(--primary-soft);
+      border-radius: 14px; cursor: pointer;
+    }
+    .upload .plus {
+      width: 44px; height: 44px; border-radius: 50%; background: #fff; color: var(--primary);
+      display: grid; place-items: center; font-size: 22px; font-weight: 700;
+    }
+    .upload small { display: block; color: var(--muted); margin-top: 2px; }
+
+    .actions { display: flex; justify-content: flex-end; margin-top: 32px; }
+    .btn {
+      background: var(--primary); color: #fff; border: 0; padding: 14px 28px;
+      border-radius: 12px; font-weight: 600; font-size: 15px; cursor: pointer;
+      box-shadow: 0 4px 12px rgba(31,138,135,.3);
+    }
+    .btn:hover { background: var(--primary-dark); }
+
+    .error { color: #c0392b; font-size: 13px; display: block; margin-top: 6px; }
+    .ok { background: var(--primary-soft); color: var(--primary-dark); padding: 12px 16px; border-radius: 12px; margin-bottom: 16px; font-weight: 600; }
+
+    /* ===== Preview ===== */
+    .preview {
+      background: #fff; border-radius: 8px; min-height: 620px; padding: 44px;
+      border: 1px solid var(--border); box-shadow: 0 8px 30px rgba(0,0,0,.06);
+    }
+    .preview small { color: var(--muted); }
+    .preview h2 { margin: 14px 0 4px; font-size: 26px; }
+    .preview .pos { color: var(--primary); font-weight: 600; margin: 0 0 6px; }
+    .preview .mail { color: var(--muted); margin: 0; }
+
+    @media (max-width: 900px) {
+      .wrap { grid-template-columns: 1fr; }
+      .menu a:not(.btn-nav) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="{{ route('landing') }}" class="brand">
+      <span class="logo">✦</span> KARIREA
+    </a>
+    <nav class="menu">
+      <a href="{{ route('landing') }}#cara-kerja">Cara kerja</a>
+      <a href="{{ route('landing') }}#template">Template</a>
+      <a href="{{ route('landing') }}#faq">FAQ</a>
+      <a href="{{ route('admin.login') }}">Masuk Admin</a>
+      <a href="{{ route('mulai') }}" class="btn-nav">Mulai gratis</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <form class="card" action="{{ route('resume.store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <span class="badge">Langkah 1 dari 8</span>
+    <h1>Data pribadi</h1>
+    <p class="desc">Cara perusahaan menghubungi Anda. Kami memakai posisi yang Anda inginkan untuk menyesuaikan bagian CV lainnya.</p>
+
+    @if (session('sukses')) <div class="ok">{{ session('sukses') }}</div> @endif
+
+    <label class="upload">
+      <input type="file" name="foto" accept="image/*" hidden>
+      <span class="plus">+</span>
+      <span><strong>Tambah foto</strong><small>Opsional, pilih file gambar</small></span>
+    </label>
+    @error('foto') <span class="error">{{ $message }}</span> @enderror
+
+    <label class="field">Posisi yang diinginkan</label>
+    <input class="input" type="text" name="posisi" value="{{ old('posisi') }}">
+    @error('posisi') <span class="error">{{ $message }}</span> @enderror
+
+    <div class="row">
+      <div>
+        <label class="field">Nama depan</label>
+        <input class="input" type="text" name="nama_depan" value="{{ old('nama_depan') }}">
+        @error('nama_depan') <span class="error">{{ $message }}</span> @enderror
+      </div>
+      <div>
+        <label class="field">Nama belakang</label>
+        <input class="input" type="text" name="nama_belakang" value="{{ old('nama_belakang') }}">
+        @error('nama_belakang') <span class="error">{{ $message }}</span> @enderror
+      </div>
+    </div>
+
+    <label class="field">Email</label>
+    <input class="input" type="email" name="email" value="{{ old('email') }}">
+    @error('email') <span class="error">{{ $message }}</span> @enderror
+
+    <div class="actions">
+      <button class="btn" type="submit">Berikutnya: Pengalaman kerja →</button>
+    </div>
+  </form>
+
+  <aside class="preview">
+    <small>Detail pribadi</small>
+    <h2 id="pv-nama">Nama Anda</h2>
+    <p class="pos" id="pv-posisi">Posisi</p>
+    <p class="mail" id="pv-email">email@contoh.com</p>
+  </aside>
+</main>
+
+<script>
+  const q = n => document.querySelector(`[name="${n}"]`);
+  const set = (id, v, f) => document.getElementById(id).textContent = v || f;
+  const nama = () => set('pv-nama', `${q('nama_depan').value} ${q('nama_belakang').value}`.trim(), 'Nama Anda');
+  q('nama_depan').addEventListener('input', nama);
+  q('nama_belakang').addEventListener('input', nama);
+  q('posisi').addEventListener('input', e => set('pv-posisi', e.target.value, 'Posisi'));
+  q('email').addEventListener('input', e => set('pv-email', e.target.value, 'email@contoh.com'));
 </script>
 </body>
 </html>
