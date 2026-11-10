@@ -99,7 +99,7 @@
         </div>
 
         <p class="mt-4 text-center text-[10px] leading-4 text-slate-500">
-          Ini pratinjau antarmuka. Fitur analisis AI belum terhubung; data CV tidak diproses atau disimpan dari halaman ini.
+          Ini contoh tampilan proses. Unggah CV dari formulir untuk menjalankan analisis yang sebenarnya.
         </p>
       </section>
 
