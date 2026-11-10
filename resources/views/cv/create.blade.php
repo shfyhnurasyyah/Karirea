@@ -167,10 +167,10 @@
               <div class="mt-4">
                 <p class="text-sm font-semibold">Tema warna</p>
                 <div class="mt-2 flex gap-2">
-                  <input type="radio" name="tema_warna" value="#1F8A8C" checked class="cv-color-teal h-7 w-7 rounded-full border-2 border-border">
-                  <input type="radio" name="tema_warna" value="#16313A" class="cv-color-dark h-7 w-7 rounded-full border-2 border-border">
-                  <input type="radio" name="tema_warna" value="#C94B4B" class="cv-color-red h-7 w-7 rounded-full border-2 border-border">
-                  <input type="radio" name="tema_warna" value="#6B4B14" class="cv-color-brown h-7 w-7 rounded-full border-2 border-border">
+                  <input type="radio" name="tema_warna" value="#1D4ED8" checked class="cv-color-biru appearance-none h-7 w-7 rounded-full border-2 border-border cursor-pointer checked:ring-2 checked:ring-offset-2 checked:ring-primary">
+                  <input type="radio" name="tema_warna" value="#15803D" class="cv-color-hijau appearance-none h-7 w-7 rounded-full border-2 border-border cursor-pointer checked:ring-2 checked:ring-offset-2 checked:ring-primary">
+                  <input type="radio" name="tema_warna" value="#B91C1C" class="cv-color-merah appearance-none h-7 w-7 rounded-full border-2 border-border cursor-pointer checked:ring-2 checked:ring-offset-2 checked:ring-primary">
+                  <input type="radio" name="tema_warna" value="#111827" class="cv-color-hitam appearance-none h-7 w-7 rounded-full border-2 border-border cursor-pointer checked:ring-2 checked:ring-offset-2 checked:ring-primary">
                 </div>
               </div>
 
