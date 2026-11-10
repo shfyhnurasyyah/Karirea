@@ -19,7 +19,7 @@ class GeminiClient
     {
         $payload = [
             'contents' => [['role' => 'user', 'parts' => $parts]],
-            'generationConfig' => ['temperature' => 0.4],
+            'generationConfig' => ['temperature' => 0.2],
         ];
 
         if ($system) {
