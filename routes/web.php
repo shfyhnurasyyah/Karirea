@@ -37,6 +37,7 @@ Route::get('/cv/optimasi', function () {
 
 Route::post('/cv/store', [CvController::class, 'store'])->name('cv.store');
 Route::get('/cv/hasil/{cv}', [CvController::class, 'show'])->name('cv.result');
+Route::get('/cv/checkout/{cv}', [CvController::class, 'checkout'])->name('cv.checkout');
 
 Route::prefix('plagiat')->name('plagiat.')->group(function () {
     Route::get('/create', [PlagiatController::class, 'create'])->name('create');

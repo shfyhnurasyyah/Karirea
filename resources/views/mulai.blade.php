@@ -58,7 +58,7 @@
             <div class="mt-10 space-y-4">
 
                 {{-- Kartu 1: Buat CV baru (disorot) --}}
-                <a href="{{ route('cv.create') }}"
+                <a href="{{ route('resume.create') }}"
                    class="group flex items-center gap-5 rounded-2xl border border-primary bg-white p-5 transition hover:bg-primary/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                     <span class="grid size-14 shrink-0 place-items-center rounded-xl bg-primary text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6" aria-hidden="true">

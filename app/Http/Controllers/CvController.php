@@ -125,4 +125,9 @@ class CvController extends Controller
     {
         return view('cv.hasil', compact('cv'));
     }
+
+    public function checkout(Cv $cv): View
+    {
+        return view('cv.checkout', compact('cv'));
+    }
 }
